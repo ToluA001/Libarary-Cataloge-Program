@@ -1,13 +1,14 @@
-WPF Library Catalogue Application
+#WPF Library Catalogue Application
 Welcome to the WPF Library Catalogue Application! This application allows users to manage their personal library by adding, viewing, checking in, and checking out books. It is built using the Windows Presentation Foundation (WPF) framework in C#.
 
 Features
-Add Books: Users can add books to their library by providing the title, author, and other relevant information.
-View All Books: Users can view a list of all the books in their library along with their details.
-Check In/Out: Users can mark books as checked in or checked out, helping them keep track of borrowed books.
-Import Books: (Future Feature) Import books from a file (e.g., CSV, JSON) to quickly populate the library.
-Database Integration: (Future Feature) Utilize a database to store books instead of an in-memory list, allowing for scalability and persistence.
-Event Tracking: (Future Feature) Record event dates such as check-in and check-out dates for each book, enabling users to track borrowing history.
+1.) Add Books: Users can add books to their library by providing the title, author, and other relevant information.
+2.) View All Books: Users can view a list of all the books in their library along with their details.
+3.) Check In/Out: Users can mark books as checked in or checked out, helping them keep track of borrowed books.
+4.) Import Books: (Future Feature) Import books from a file (e.g., CSV, JSON) to quickly populate the library.
+5.) Database Integration: (Future Feature) Utilize a database to store books instead of an in-memory list, allowing for scalability and persistence.
+6.) Event Tracking: (Future Feature) Record event dates such as check-in and check-out dates for each book, enabling users to track borrowing history.
+
 Getting Started
 To get started with the WPF Library Catalogue Application, follow these steps:
 

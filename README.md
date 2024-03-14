@@ -11,7 +11,7 @@ Event Tracking: (Future Feature) Record event dates such as check-in and check-o
 Getting Started
 To get started with the WPF Library Catalogue Application, follow these steps:
 
-Clone this repository to your local machine using git clone https://github.com/your-username/wpflibrary-catalogue.git.
+Clone this repository to your local machine using git clone https://github.com/your-username/Libarary-Catalogue-Program.git.
 Open the solution in Visual Studio or your preferred IDE.
 Build the solution to restore dependencies and ensure everything is set up correctly.
 Run the application and start managing your library!

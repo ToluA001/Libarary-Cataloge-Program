@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34408.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Libarary Cataloge Program", "Libarary Cataloge Program.csproj", "{1A126EA1-EF5D-4047-BA69-98FC03BC1446}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A126EA1-EF5D-4047-BA69-98FC03BC1446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A126EA1-EF5D-4047-BA69-98FC03BC1446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A126EA1-EF5D-4047-BA69-98FC03BC1446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A126EA1-EF5D-4047-BA69-98FC03BC1446}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9726111A-670F-4702-8F4E-1E4D43A9DB24}
+	EndGlobalSection
+EndGlobal

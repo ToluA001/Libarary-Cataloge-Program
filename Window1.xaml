@@ -1,0 +1,25 @@
+﻿<Window x:Class="Libarary_Cataloge_Program.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Libarary_Cataloge_Program"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800">
+    <Border Background="#272537">
+        <Grid>
+            <StackPanel>
+                <ListView ItemsSource="{Binding Books}" Background="#272537" 
+                          Foreground="PeachPuff" BorderThickness="0" ClipToBounds="True" >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Title}"/>
+                            <GridViewColumn Header="Author" DisplayMemberBinding="{Binding Author}"/>
+                            <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Check}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

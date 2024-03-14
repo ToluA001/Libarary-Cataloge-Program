@@ -1,0 +1,114 @@
+﻿<Window x:Class="Libarary_Cataloge_Program.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Libarary_Cataloge_Program"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" 
+        Background="Transparent" WindowStyle="SingleBorderWindow">
+
+    <Border Background="#272537">
+        <Grid>
+            <Frame x:Name="MainFrame"/>
+            <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" >
+
+                <Label Content="Hello There" FontSize="40" 
+                       FontWeight="DemiBold" Foreground="PeachPuff" 
+                       HorizontalAlignment="Center"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Book name: " FontSize="20" 
+                       FontWeight="Normal" Foreground="PeachPuff" 
+                       HorizontalAlignment="Center" Grid.Row="0"/>
+
+                    <Label Content="Auther last name: " FontSize="20" 
+                       FontWeight="Normal" Foreground="PeachPuff" 
+                       HorizontalAlignment="Left" Grid.Column="1" Grid.Row="0" Margin="30,0,0,0"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="400"/>
+                        <ColumnDefinition Width="400"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <TextBox Text="{Binding NameOfBook}" FontSize="20"
+                         Height="50" Width="200" Margin="100,0,0,0"
+                         BorderThickness="1" BorderBrush="PeachPuff"
+                         Foreground="PeachPuff" Background="#272537"
+                         VerticalContentAlignment="Center"
+                         Grid.Row="0" Grid.Column="0"/>
+                    <TextBox Text="{Binding AutherLastName}" FontSize="20"
+                         Height="50" Width="200" Margin="0,0,100,0"
+                         BorderThickness="1" BorderBrush="PeachPuff"
+                         Foreground="PeachPuff" Background="#272537"
+                         VerticalContentAlignment="Center"
+                         Grid.Row="0" Grid.Column="1"/>
+                </Grid>
+                <Grid Margin="0,50,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Button Content="Add Book" FontSize="20"
+                         Height="50" Width="200" Margin="0,0,0,0"
+                         BorderThickness="1" BorderBrush="PeachPuff"
+                         Foreground="PeachPuff" Background="#272537"
+                         VerticalContentAlignment="Center"
+                         Grid.Row="0" Grid.Column="0" Command="{Binding AddBook}"/>
+                    <Button Content="Check Out" FontSize="20"
+                         Height="50" Width="200" Margin="0,0,0,0"
+                         BorderThickness="1" BorderBrush="PeachPuff"
+                         Foreground="PeachPuff" Background="#272537"
+                         VerticalContentAlignment="Center"
+                         Grid.Row="0" Grid.Column="1" Command="{Binding CheckOut}"/>
+                    <Button Content="Check In" FontSize="20"
+                         Height="50" Width="200" Margin="0,0,0,0"
+                         BorderThickness="1" BorderBrush="PeachPuff"
+                         Foreground="PeachPuff" Background="#272537"
+                         VerticalContentAlignment="Center"
+                         Grid.Row="0" Grid.Column="2" Command="{Binding CheckIn}"/>
+
+                </Grid>
+                <Grid Margin="0,25,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+
+                    <Button Content="View all books" FontSize="20"
+                         Height="50" Width="200"
+                         BorderThickness="1" BorderBrush="PeachPuff"
+                         Foreground="PeachPuff" Background="#272537"
+                         VerticalContentAlignment="Center" Margin="0,0,0,0"
+                         Command="{Binding ViewAllBooks}"/>
+
+                    <Button Content="Import Books" FontSize="20"
+                            Grid.Column="1"
+                         Height="50" Width="200"
+                         BorderThickness="1" BorderBrush="PeachPuff"
+                         Foreground="PeachPuff" Background="#272537"
+                        VerticalContentAlignment="Center" Margin="0,0,0,0"
+                         Command="{Binding OpenImportWin}"/>
+                </Grid>
+
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

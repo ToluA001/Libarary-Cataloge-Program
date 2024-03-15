@@ -97,7 +97,7 @@ namespace Libarary_Cataloge_Program.Model
             foreach (Book book in books)
             {
                 // Create a string containing the book title and author, separated by "by"
-                string bookNameAndAuthor = $"{book.Title} by {book.Author} Status: {book.Check}";
+                string bookNameAndAuthor = $"{book.Title} by {book.Author} Status: {book.Check} Date created: {book.DateCreated}";
 
                 // Append the formatted string with a newline character
                 sb.AppendLine(bookNameAndAuthor);

@@ -16,6 +16,7 @@
                             <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Title}"/>
                             <GridViewColumn Header="Author" DisplayMemberBinding="{Binding Author}"/>
                             <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Check}"/>
+                            <GridViewColumn Header="Date added" DisplayMemberBinding="{Binding DateCreated, StringFormat='yyyy-MM-dd'}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>

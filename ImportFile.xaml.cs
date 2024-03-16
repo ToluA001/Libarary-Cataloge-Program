@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Libarary_Cataloge_Program.ViewModel;
 
 namespace Libarary_Cataloge_Program
 {
@@ -22,6 +23,7 @@ namespace Libarary_Cataloge_Program
         public ImportFile()
         {
             InitializeComponent();
+            DataContext = new ImportViewModel();
         }
     }
 }

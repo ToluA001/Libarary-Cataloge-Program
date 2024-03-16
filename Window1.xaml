@@ -8,9 +8,10 @@
         Title="Window1" Height="450" Width="800">
     <Border Background="#272537">
         <Grid>
-            <StackPanel>
+
+            <ScrollViewer  VerticalScrollBarVisibility="Auto">
                 <ListView ItemsSource="{Binding Books}" Background="#272537" 
-                          Foreground="PeachPuff" BorderThickness="0" ClipToBounds="True" >
+                            Foreground="PeachPuff" BorderThickness="0" ClipToBounds="True" ScrollViewer.CanContentScroll="True">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Title}"/>
@@ -20,7 +21,8 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-            </StackPanel>
+            </ScrollViewer>
+
         </Grid>
     </Border>
 </Window>

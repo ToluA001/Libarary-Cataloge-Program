@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Libarary_Cataloge_Program.Model;
 
 namespace Libarary_Cataloge_Program.Model
@@ -18,8 +20,8 @@ namespace Libarary_Cataloge_Program.Model
             // Initialize an empty list to store books in memory
             books = new List<Book>();
             // Add some initial books for demonstration purposes
-            Book x = new Book("book1", "auth1", "Checked in");
-            Book y = new Book("book2", "auth2", "Checked in");
+            Book x = new Book("book1", "auth1");
+            Book y = new Book("book2", "auth2");
             books.Add(x);
             books.Add(y);
         }
@@ -132,6 +134,36 @@ namespace Libarary_Cataloge_Program.Model
 
             // If the loop finishes without finding a matching book, return false
             return false;
+        }
+
+        public static void ImportBooksFromCVS(string filePath)
+        {
+            try
+            {
+                string[] lines = File.ReadAllLines(filePath);
+
+                for (int i = 1; i < lines.Length; i++)
+                {
+                    string line = lines[i];
+                    string[] fields = line.Split(',');
+
+                    if (fields.Length == 2)
+                    {
+                        // Extract book name and author from the CSV fields
+                        string bookName = fields[0].Trim();
+                        string authorName = fields[1].Trim();
+
+                        // Add the book to the library
+                        BookRepository.Instance.AddBook(new Book(bookName, authorName));
+                    }
+                }
+                // Notify the user that books have been imported successfully
+                MessageBox.Show("Books imported successfully!");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Error importing books: {ex.Message}");
+            }
         }
     }
 }

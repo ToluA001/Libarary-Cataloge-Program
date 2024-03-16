@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Libarary_Cataloge_Program"
         mc:Ignorable="d"
-        Title="ImportFile" Height="450" Width="800">
+        Title="ImportFile" Height="450" Width="450">
     <Grid>
         <Border Background="#272537">
             <StackPanel Orientation="Vertical">
@@ -47,6 +47,28 @@
                          Foreground="PeachPuff" Background="#272537"
                          VerticalContentAlignment="Center"
                          Grid.Row="0" Grid.Column="0" Command="{Binding Import}"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="File must be a CSV" FontSize="20" 
+                       FontWeight="Normal" Foreground="PeachPuff" 
+                       HorizontalAlignment="Center" Grid.Row="0"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Book Name,Auther Name " FontSize="20" 
+                       FontWeight="Normal" Foreground="PeachPuff" 
+                       HorizontalAlignment="Center" Grid.Row="0"/>
                 </Grid>
             </StackPanel>
         </Border>

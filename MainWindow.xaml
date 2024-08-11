@@ -13,7 +13,7 @@
             <Frame x:Name="MainFrame"/>
             <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" >
 
-                <Label Content="Hello There" FontSize="40" 
+                <Label Content="Welcome To Your Library" FontSize="40" 
                        FontWeight="DemiBold" Foreground="PeachPuff" 
                        HorizontalAlignment="Center"/>
                 <Grid>

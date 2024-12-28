@@ -16,7 +16,7 @@ namespace Libarary_Cataloge_Program.ViewModel
 
         public ViewAllVM()
         {
-            Books = new ObservableCollection<Book>(BookRepository.Instance.GAB());
+            Books = new ObservableCollection<Book>(BookRepository.Instance.GetAllBooks());
         }
     }
 }

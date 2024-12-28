@@ -11,22 +11,18 @@ namespace Libarary_Cataloge_Program.Model
         public string Title { get; set; }
         public string Author { get; set; }
 
+        public bool Status { get; set; }
         public string Check { get; set; } 
 
         public DateTime DateCreated { get; set; }
 
-        public Book(string title, string author, string status)
-        {
-            Title = title;
-            Author = author;
-            Check = status;
-            DateCreated  = DateTime.Now;
-        }
         public Book(string title, string author)
         {
             Title = title;
             Author = author;
-            Check = "Checked in";
+            Status = true;
+            ChangeStatus();
+            //Check = "Checked in";
             DateCreated = DateTime.Now;
         }
 
@@ -36,14 +32,21 @@ namespace Libarary_Cataloge_Program.Model
             return $"{Title} by {Author} status: {Check} Date created: {DateCreated}";
         }
 
-        public void checkout ()
+        public void Checkout ()
         {
-            this.Check = "Checked out";
+            Status = false;
+            ChangeStatus();
         }
 
-        public void checkin()
+        public void Checkin()
         {
-            this.Check = "Checked in";
+            Status = true;
+            ChangeStatus();
+        }
+
+        public void ChangeStatus()
+        {
+            Check = Status ? "Checked in" : "Checked out";
         }
     }
 }

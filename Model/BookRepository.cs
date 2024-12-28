@@ -12,28 +12,28 @@ namespace Libarary_Cataloge_Program.Model
     public class BookRepository
     {
         //private List<Book> books;
-        private static BookRepository instance;
-        private List<Book> books;
+        private static BookRepository LibraryInstance;
+        private List<Book> Library;
 
         private BookRepository()
         {
             // Initialize an empty list to store books in memory
-            books = new List<Book>();
+            Library = new List<Book>();
             // Add some initial books for demonstration purposes
-            Book x = new Book("book1", "auth1");
-            Book y = new Book("book2", "auth2");
-            books.Add(x);
-            books.Add(y);
+            //Book x = new Book("book1", "auth1");
+            //Book y = new Book("book2", "auth2");
+            //books.Add(x);
+            //books.Add(y);
         }
         public static BookRepository Instance
         {
             get
             {
-                if (instance == null)
+                if (LibraryInstance == null)
                 {
-                    instance = new BookRepository();
+                    LibraryInstance = new BookRepository();
                 }
-                return instance;
+                return LibraryInstance;
             }
         }
 
@@ -45,12 +45,13 @@ namespace Libarary_Cataloge_Program.Model
             }
 
             // Check if a book with the same title and author already exists
-            if (books.Any(b => b.Title == book.Title && b.Author == book.Author))
+            if (Library.Any(b => b.Title == book.Title && b.Author == book.Author))
             {
+                //For some reason this crashes the proram 12/28/24 9:52am
                 throw new InvalidOperationException($"Book with title '{book.Title}' and author '{book.Author}' already exists.");
             }
 
-            books.Add(book);
+            Library.Add(book);
         }
 
         public void UpdateBook(Book updatedBook)
@@ -61,7 +62,7 @@ namespace Libarary_Cataloge_Program.Model
             }
 
             // Find the existing book by title and author
-            Book existingBook = books.FirstOrDefault(b => b.Title == updatedBook.Title && b.Author == updatedBook.Author);
+            Book existingBook = Library.FirstOrDefault(b => b.Title == updatedBook.Title && b.Author == updatedBook.Author);
 
             if (existingBook != null)
             {
@@ -78,11 +79,11 @@ namespace Libarary_Cataloge_Program.Model
         public void DeleteBook(string title, string author)
         {
             // Find the book by title and author
-            Book bookToDelete = books.FirstOrDefault(b => b.Title == title && b.Author == author);
+            Book bookToDelete = Library.FirstOrDefault(b => b.Title == title && b.Author == author);
 
             if (bookToDelete != null)
             {
-                books.Remove(bookToDelete);
+                Library.Remove(bookToDelete);
             }
             else
             {
@@ -90,13 +91,13 @@ namespace Libarary_Cataloge_Program.Model
             }
         }
 
-        public String GetAllBooks()
+        public override string ToString()
         {
             // Initialize an empty string to build the output
             StringBuilder sb = new StringBuilder();
 
             // Iterate through each book in the input list
-            foreach (Book book in books)
+            foreach (Book book in Library)
             {
                 // Create a string containing the book title and author, separated by "by"
                 string bookNameAndAuthor = $"{book.Title} by {book.Author} Status: {book.Check} Date created: {book.DateCreated}";
@@ -109,22 +110,22 @@ namespace Libarary_Cataloge_Program.Model
             return sb.ToString();
         }
 
-        public List<Book> GAB()
+        public List<Book> GetAllBooks()
         {
-            return books;
+            return Library;
         }  
 
         public Book GetBookByTitleAndAuthor(string title, string author)
         {
             // Find the book by title and author
-            return books.FirstOrDefault(b => b.Title == title && b.Author == author);
+            return Library.FirstOrDefault(b => b.Title == title && b.Author == author);
         }
 
         public static bool CheckLib(Book x)
         {
             BookRepository repository = BookRepository.Instance;
 
-            foreach (Book b in repository.GAB())
+            foreach (Book b in repository.GetAllBooks())
             {
                 if ((b.Title).Equals(x.Title) && (b.Author).Equals(x.Author))
                 {

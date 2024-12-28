@@ -68,8 +68,8 @@ namespace Libarary_Cataloge_Program.ViewModel
             if (BookRepository.CheckLib(new Book(NameOfBook, AutherLastName)) == true)
             {
                 Book currbook = repository.GetBookByTitleAndAuthor(NameOfBook, AutherLastName);
-                currbook.checkout();
-                MessageBox.Show(repository.GetAllBooks());
+                currbook.Checkout();
+                //MessageBox.Show(repository.ToString());
             }
             else if (BookRepository.CheckLib(new Book(NameOfBook, AutherLastName)) == false)
             {
@@ -83,8 +83,8 @@ namespace Libarary_Cataloge_Program.ViewModel
             if(BookRepository.CheckLib(new Book(NameOfBook, AutherLastName)) == true)
             {
                 Book currbook = repository.GetBookByTitleAndAuthor(NameOfBook, AutherLastName);
-                currbook.checkin();
-                MessageBox.Show(repository.GetAllBooks());
+                currbook.Checkin();
+                //MessageBox.Show(repository.ToString());
             }else if(BookRepository.CheckLib(new Book(NameOfBook, AutherLastName)) == false)
             {
                 MessageBox.Show("That book does not exist");
@@ -103,7 +103,7 @@ namespace Libarary_Cataloge_Program.ViewModel
                 Book x = new Book(NameOfBook, AutherLastName);
 
                 repository.AddBook(x);
-                MessageBox.Show(repository.GetAllBooks());
+                //MessageBox.Show(repository.ToString());
             }
         }
     }

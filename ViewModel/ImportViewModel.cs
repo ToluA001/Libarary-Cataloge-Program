@@ -36,7 +36,7 @@ namespace Libarary_Cataloge_Program.ViewModel
         private void Imprt()
         {
             BookRepository.ImportBooksFromCVS(FilePath);
-            MessageBox.Show(repository.GetAllBooks());
+            //MessageBox.Show(repository.ToString());
         }
     }
 }

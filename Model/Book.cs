@@ -16,6 +16,11 @@ namespace Libarary_Cataloge_Program.Model
 
         public DateTime DateCreated { get; set; }
 
+        public DateTime StatusChangeDate { get; set; }
+
+        // dictionary of the date the status is changed and what the status it changing to
+        Dictionary<DateTime, bool> StatusHistory = new Dictionary<DateTime, bool>();
+
         public Book(string title, string author)
         {
             Title = title;
@@ -24,9 +29,11 @@ namespace Libarary_Cataloge_Program.Model
             ChangeStatus();
             //Check = "Checked in";
             DateCreated = DateTime.Now;
+            StatusChangeDate = DateTime.Now;
+
         }
 
-        // Optional: You can override the ToString() method to provide a custom string representation of the book.
+        // You can override the ToString() method to provide a custom string representation of the book.
         public override string ToString()
         {
             return $"{Title} by {Author} status: {Check} Date created: {DateCreated}";
@@ -36,17 +43,24 @@ namespace Libarary_Cataloge_Program.Model
         {
             Status = false;
             ChangeStatus();
+            StatusChangeDate = DateTime.Now;
+            StatusHistory.Add(StatusChangeDate, Status);
+
         }
 
         public void Checkin()
         {
             Status = true;
             ChangeStatus();
+            StatusChangeDate = DateTime.Now;
+            StatusHistory.Add(StatusChangeDate, Status);
+
         }
 
         public void ChangeStatus()
         {
             Check = Status ? "Checked in" : "Checked out";
+
         }
     }
 }

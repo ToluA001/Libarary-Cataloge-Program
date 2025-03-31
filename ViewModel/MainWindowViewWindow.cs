@@ -43,6 +43,7 @@ namespace Libarary_Cataloge_Program.ViewModel
             CheckOut = new RelayCommand(Out);
             CheckIn = new RelayCommand(In);
             OpenImportWin = new RelayCommand(Open);
+            StatusHistoryCheck = new RelayCommand(Check);
         }
 
         public ICommand ViewAllBooks { get; }
@@ -50,6 +51,7 @@ namespace Libarary_Cataloge_Program.ViewModel
         public ICommand CheckIn { get; }
         public ICommand CheckOut { get; }
         public ICommand OpenImportWin { get; }
+        public ICommand StatusHistoryCheck { get; }
 
         private void Open()
         {
@@ -105,6 +107,11 @@ namespace Libarary_Cataloge_Program.ViewModel
                 repository.AddBook(x);
                 //MessageBox.Show(repository.ToString());
             }
+        }
+
+        private void Check()
+        {
+
         }
     }
 }

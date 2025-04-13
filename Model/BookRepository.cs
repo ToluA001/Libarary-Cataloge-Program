@@ -76,19 +76,9 @@ namespace Libarary_Cataloge_Program.Model
             }
         }
 
-        public void DeleteBook(string title, string author)
+        public void DeleteBook(Book bookToDelete)
         {
-            // Find the book by title and author
-            Book bookToDelete = Library.FirstOrDefault(b => b.Title == title && b.Author == author);
-
-            if (bookToDelete != null)
-            {
-                Library.Remove(bookToDelete);
-            }
-            else
-            {
-                throw new InvalidOperationException($"Book with title '{title}' and author '{author}' not found.");
-            }
+            Library.Remove(bookToDelete);
         }
 
         public override string ToString()
@@ -117,12 +107,13 @@ namespace Libarary_Cataloge_Program.Model
 
         public Book GetBookByTitleAndAuthor(string title, string author)
         {
-            // Find the book by title and author
+            // Find a book by title and author
             return Library.FirstOrDefault(b => b.Title == title && b.Author == author);
         }
 
+
         public static bool CheckLib(Book x)
-        {
+        { //Checks to see if a book exists 
             BookRepository repository = BookRepository.Instance;
 
             foreach (Book b in repository.GetAllBooks())
@@ -132,8 +123,6 @@ namespace Libarary_Cataloge_Program.Model
                     return true;
                 }
             }
-
-            // If the loop finishes without finding a matching book, return false
             return false;
         }
 

@@ -88,6 +88,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
@@ -114,7 +115,15 @@
                          BorderThickness="1" BorderBrush="PeachPuff"
                          Foreground="PeachPuff" Background="#272537"
                         VerticalContentAlignment="Center" Margin="0,0,0,0"
-                         Command="{Binding }"/>
+                         Command="{Binding StatusHistoryCheck}"/>
+
+                    <Button Content="Delete Book" FontSize="20"
+                            Grid.Column="3"
+                         Height="50" Width="200"
+                         BorderThickness="1" BorderBrush="PeachPuff"
+                         Foreground="PeachPuff" Background="#272537"
+                        VerticalContentAlignment="Center" Margin="0,0,0,0"
+                         Command="{Binding DeleteBook}"/>
                 </Grid>
 
             </StackPanel>

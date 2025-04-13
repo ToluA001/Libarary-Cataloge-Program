@@ -14,6 +14,7 @@ namespace Libarary_Cataloge_Program.ViewModel
     class MainWindowViewWindow:BaseViewModel
     {
         BookRepository repository = BookRepository.Instance;
+        public Book WSOB;
 
         private string _NameOfBook;
         public string NameOfBook
@@ -44,6 +45,7 @@ namespace Libarary_Cataloge_Program.ViewModel
             CheckIn = new RelayCommand(In);
             OpenImportWin = new RelayCommand(Open);
             StatusHistoryCheck = new RelayCommand(Check);
+            DeleteBook = new RelayCommand(Delete);
         }
 
         public ICommand ViewAllBooks { get; }
@@ -52,6 +54,7 @@ namespace Libarary_Cataloge_Program.ViewModel
         public ICommand CheckOut { get; }
         public ICommand OpenImportWin { get; }
         public ICommand StatusHistoryCheck { get; }
+        public ICommand DeleteBook { get; }
 
         private void Open()
         {
@@ -111,7 +114,23 @@ namespace Libarary_Cataloge_Program.ViewModel
 
         private void Check()
         {
+            WSOB = repository.GetBookByTitleAndAuthor(NameOfBook,AutherLastName);
+            
+            
+        }
 
+        private void Delete()
+        {
+            if (BookRepository.CheckLib(new Book(NameOfBook, AutherLastName)) == true)
+            {
+                Book currbook = repository.GetBookByTitleAndAuthor(NameOfBook, AutherLastName);
+
+                repository.DeleteBook(currbook);
+            }
+            else
+            {
+                MessageBox.Show("This book doesn't exist");
+            }
         }
     }
 }

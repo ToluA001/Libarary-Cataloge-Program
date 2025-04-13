@@ -9,7 +9,7 @@ Features:
 
 3.) Check In/Out: Users can mark books as checked in or checked out, helping them keep track of borrowed books.
 
-4.) Import Books: (Future Feature) Import books from a file (e.g., CSV, JSON) to quickly populate the library.
+4.) Import Books:  Import books from a file (e.g., CSV, JSON) to quickly populate the library.
 
 5.) Database Integration: (Future Feature) Utilize a database to store books instead of an in-memory list, allowing for scalability and persistence.
 

@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Libarary_Cataloge_Program
+namespace Libarary_Cataloge_Program.Views
 {
     /// <summary>
-    /// Interaction logic for ImportPage.xaml
+    /// Interaction logic for HOME.xaml
     /// </summary>
-    public partial class ImportPage : Page
+    public partial class HOME : Window
     {
-        public ImportPage()
+        public HOME()
         {
             InitializeComponent();
         }

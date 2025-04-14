@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using Libarary_Cataloge_Program.Views;
+using System.Configuration;
 using System.Data;
 using System.Windows;
 
@@ -8,7 +9,5 @@ namespace Libarary_Cataloge_Program
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
-    {
-    }
-
+    {}
 }

@@ -8,6 +8,7 @@ namespace Libarary_Cataloge_Program.Model
 {
     public class Book
     {
+        public int Id { get; set; } // EF will assume this is the key
         public string Title { get; set; }
         public string Author { get; set; }
 

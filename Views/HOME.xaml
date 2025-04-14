@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Libarary_Cataloge_Program.Views"
         mc:Ignorable="d"
-        Title="HOME" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="HOME" Height="450" Width="800"
+        Background="Transparent" WindowStyle="SingleBorderWindow">
+    <Border Background="DarkSeaGreen">
+        <StackPanel>
+            <Button Content="Go to Test Page" Click="GoToTestPage_Click"/>
+            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" />
+        </StackPanel>
+    </Border>
 </Window>

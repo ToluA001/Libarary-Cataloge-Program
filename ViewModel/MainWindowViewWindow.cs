@@ -1,4 +1,5 @@
 ﻿using Libarary_Cataloge_Program.Model;
+using Libarary_Cataloge_Program.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -105,11 +106,19 @@ namespace Libarary_Cataloge_Program.ViewModel
             }
             else
             {
-                Book x = new Book(NameOfBook, AutherLastName);
+                
+                using (var db = new LibDataBase())
+                {
+                    var newBook = new Book(NameOfBook, AutherLastName);
+                    db.Books.Add(newBook);
+                    db.SaveChanges();
 
-                repository.AddBook(x);
-                //MessageBox.Show(repository.ToString());
+                    var books = db.Books.ToList();
+
+                    db.SaveChanges();
+                }
             }
+
         }
 
         private void Check()

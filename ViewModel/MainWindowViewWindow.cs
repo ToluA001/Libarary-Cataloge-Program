@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Navigation;
+using Libarary_Cataloge_Program.Views;
 
 namespace Libarary_Cataloge_Program.ViewModel
 {
@@ -65,35 +66,43 @@ namespace Libarary_Cataloge_Program.ViewModel
         private void See()
         {
             Window1 window1 = new Window1();
-            window1.Show();
+            window1.Show();            
         }
 
         private void Out() 
         {
+            using(var db = new LibDataBase())
+            {
+                Book book = db.GetBookByTitleAndAuthor(NameOfBook, AutherLastName);
 
-            if (BookRepository.CheckLib(new Book(NameOfBook, AutherLastName)) == true)
-            {
-                Book currbook = repository.GetBookByTitleAndAuthor(NameOfBook, AutherLastName);
-                currbook.Checkout();
-                //MessageBox.Show(repository.ToString());
-            }
-            else if (BookRepository.CheckLib(new Book(NameOfBook, AutherLastName)) == false)
-            {
-                MessageBox.Show("That book does not exist");
+                if(book == null)
+                {
+                    MessageBox.Show("This Book doesn't exist");
+                }
+                else
+                {
+                    book.Status = false;
+                }
+                    db.SaveChanges();
             }
         }
 
         private void In()
         {
 
-            if(BookRepository.CheckLib(new Book(NameOfBook, AutherLastName)) == true)
+            using (var db = new LibDataBase())
             {
-                Book currbook = repository.GetBookByTitleAndAuthor(NameOfBook, AutherLastName);
-                currbook.Checkin();
-                //MessageBox.Show(repository.ToString());
-            }else if(BookRepository.CheckLib(new Book(NameOfBook, AutherLastName)) == false)
-            {
-                MessageBox.Show("That book does not exist");
+                Book book = db.GetBookByTitleAndAuthor(NameOfBook, AutherLastName);
+
+                if (book == null)
+                {
+                    MessageBox.Show("This Book doesn't exist");
+                }
+                else
+                {
+                    book.Status = true;
+                }
+                db.SaveChanges();
             }
 
         }
@@ -106,15 +115,18 @@ namespace Libarary_Cataloge_Program.ViewModel
             }
             else
             {
-                
+                Book book = new Book(NameOfBook, AutherLastName);
+
                 using (var db = new LibDataBase())
                 {
-                    var newBook = new Book(NameOfBook, AutherLastName);
-                    db.Books.Add(newBook);
-                    db.SaveChanges();
-
-                    var books = db.Books.ToList();
-
+                    if(db.DoesBookExist(book) == true)
+                    {
+                        MessageBox.Show("This book already exists");
+                    }
+                    else
+                    {
+                        db.Add(book);
+                    }
                     db.SaveChanges();
                 }
             }
@@ -130,15 +142,18 @@ namespace Libarary_Cataloge_Program.ViewModel
 
         private void Delete()
         {
-            if (BookRepository.CheckLib(new Book(NameOfBook, AutherLastName)) == true)
+            using (var db = new LibDataBase())
             {
-                Book currbook = repository.GetBookByTitleAndAuthor(NameOfBook, AutherLastName);
-
-                repository.DeleteBook(currbook);
-            }
-            else
-            {
-                MessageBox.Show("This book doesn't exist");
+                Book book = db.GetBookByTitleAndAuthor(NameOfBook, AutherLastName);
+                if (book == null)
+                {
+                    MessageBox.Show("This book doesn't exist");
+                }
+                else
+                {
+                    db.Books.Remove(book);
+                }
+                db.SaveChanges();
             }
         }
     }

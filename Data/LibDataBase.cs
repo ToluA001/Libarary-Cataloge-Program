@@ -17,15 +17,29 @@ namespace Libarary_Cataloge_Program.Data
 
         public LibDataBase()
         {
-            Database.EnsureCreated(); // ← this line creates the DB & tables if they don’t exist
+            //Database.EnsureCreated(); // ← this line creates the DB & tables if they don’t exist
         }
 
         public Book GetBookByTitleAndAuthor(string title, string author)
         {
             return Books.FirstOrDefault(b =>
-                b.Title.Equals(title, StringComparison.OrdinalIgnoreCase) &&
-                b.Author.Equals(author, StringComparison.OrdinalIgnoreCase));
-        }
+                b.Title.ToLower() == title.ToLower() &&
+                b.Author.ToLower() == author.ToLower());
 
+        }
+        public bool DoesBookExist(Book book)
+        {
+
+            if (book != null)
+            {
+                // Book exists
+                return true;
+            }
+            else
+            {
+                // Book does not exist
+                return false;
+            }
+        }
     }
 }

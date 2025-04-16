@@ -30,16 +30,20 @@ namespace Libarary_Cataloge_Program.Data
         public bool DoesBookExist(Book book)
         {
 
-            if (book != null)
-            {
-                // Book exists
-                return true;
+            using (var db = new LibDataBase()) 
+            { 
+                if(db.GetBookByTitleAndAuthor(book.Title, book.Author) != null)
+                {
+                    return true;
+                    //book exists in library 
+                }
+                else
+                {
+                    return false; 
+                    //book doesn't exist in library
+                }
             }
-            else
-            {
-                // Book does not exist
-                return false;
-            }
+
         }
     }
 }

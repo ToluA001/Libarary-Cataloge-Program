@@ -62,13 +62,14 @@ namespace Libarary_Cataloge_Program.ViewModel
         {
             ImportFile importFile = new ImportFile();
             importFile.Show();
+
+
         }
         private void See()
         {
             Window1 window1 = new Window1();
             window1.Show();            
         }
-
         private void Out() 
         {
             using(var db = new LibDataBase())

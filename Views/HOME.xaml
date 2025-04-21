@@ -7,10 +7,57 @@
         mc:Ignorable="d"
         Title="HOME" Height="450" Width="800"
         Background="Transparent" WindowStyle="SingleBorderWindow">
-    <Border Background="DarkSeaGreen">
-        <StackPanel>
-            <Button Content="Go to Test Page" Click="GoToTestPage_Click"/>
-            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" />
-        </StackPanel>
+    <Border Background="#FFF8F0">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="550" />
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Column="0" Background="#EEE8AA">
+                <Button Content="Go to Test Page" Click="GoToTestPage_Click" />
+                <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Vertical">
+                <Label FontSize="48" FontFamily="Times New Roman" 
+                       FontWeight="DemiBold" 
+                       Foreground="#2F4F4F"
+                       HorizontalAlignment="Center" Padding="0,5,0,0">
+                    Welcome to your libarary
+                </Label>
+                
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,10">
+                    <Label Content="Book name: " FontSize="26" FontFamily="Times New Roman" 
+                        Foreground="#2F4F4F" 
+                       HorizontalAlignment="Center" Margin="0,0,90,0"/>
+
+                    <Label Content="Auther last name: " FontSize="26" FontFamily="Times New Roman"
+                       Foreground="#2F4F4F" 
+                       HorizontalAlignment="Left" Grid.Column="1"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBox Text="{Binding NameOfBook}" FontSize="20"
+                         Height="50" Width="200"
+                         BorderThickness="1" BorderBrush="#A0522D"
+                         Foreground="PeachPuff" Background="#FFF8F0"
+                            Margin="0,0,30,0"/>
+                    <TextBox Text="{Binding NameOfBook}" FontSize="20"
+                         Height="50" Width="200"
+                         BorderThickness="1" BorderBrush="#A0522D"
+                         Foreground="PeachPuff" Background="#FFF8F0"
+                            />
+                </StackPanel>
+                
+            </StackPanel>
+        </Grid>
+        
+
     </Border>
 </Window>

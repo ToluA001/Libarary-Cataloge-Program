@@ -7,126 +7,127 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" 
         Background="Transparent" WindowStyle="SingleBorderWindow">
+    <Viewbox Stretch="Fill">
+        <Border Background="#272537">
+            <Grid>
+                <Frame x:Name="MainFrame"/>
+                <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" >
 
-    <Border Background="#272537">
-        <Grid>
-            <Frame x:Name="MainFrame"/>
-            <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" >
+                    <Label Content="Welcome To Your Library" FontSize="40" 
+                           FontWeight="DemiBold" Foreground="PeachPuff" 
+                           HorizontalAlignment="Center"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Book name: " FontSize="20" 
+                           FontWeight="Normal" Foreground="PeachPuff" 
+                           HorizontalAlignment="Center" Grid.Row="0"/>
 
-                <Label Content="Welcome To Your Library" FontSize="40" 
-                       FontWeight="DemiBold" Foreground="PeachPuff" 
-                       HorizontalAlignment="Center"/>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
-                    </Grid.RowDefinitions>
-                    <Label Content="Book name: " FontSize="20" 
-                       FontWeight="Normal" Foreground="PeachPuff" 
-                       HorizontalAlignment="Center" Grid.Row="0"/>
+                        <Label Content="Auther last name: " FontSize="20" 
+                           FontWeight="Normal" Foreground="PeachPuff" 
+                           HorizontalAlignment="Left" Grid.Column="1" Grid.Row="0" Margin="30,0,0,0"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="400"/>
+                            <ColumnDefinition Width="400"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+                        <TextBox Text="{Binding NameOfBook}" FontSize="20"
+                             Height="50" Width="200" Margin="100,0,0,0"
+                             BorderThickness="1" BorderBrush="PeachPuff"
+                             Foreground="PeachPuff" Background="#272537"
+                             VerticalContentAlignment="Center"
+                             Grid.Row="0" Grid.Column="0"/>
+                        <TextBox Text="{Binding AutherLastName}" FontSize="20"
+                             Height="50" Width="200" Margin="0,0,100,0"
+                             BorderThickness="1" BorderBrush="PeachPuff"
+                             Foreground="PeachPuff" Background="#272537"
+                             VerticalContentAlignment="Center"
+                             Grid.Row="0" Grid.Column="1"/>
+                    </Grid>
+                    <Grid Margin="0,50,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
 
-                    <Label Content="Auther last name: " FontSize="20" 
-                       FontWeight="Normal" Foreground="PeachPuff" 
-                       HorizontalAlignment="Left" Grid.Column="1" Grid.Row="0" Margin="30,0,0,0"/>
-                </Grid>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="400"/>
-                        <ColumnDefinition Width="400"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
-                    </Grid.RowDefinitions>
-                    <TextBox Text="{Binding NameOfBook}" FontSize="20"
-                         Height="50" Width="200" Margin="100,0,0,0"
-                         BorderThickness="1" BorderBrush="PeachPuff"
-                         Foreground="PeachPuff" Background="#272537"
-                         VerticalContentAlignment="Center"
-                         Grid.Row="0" Grid.Column="0"/>
-                    <TextBox Text="{Binding AutherLastName}" FontSize="20"
-                         Height="50" Width="200" Margin="0,0,100,0"
-                         BorderThickness="1" BorderBrush="PeachPuff"
-                         Foreground="PeachPuff" Background="#272537"
-                         VerticalContentAlignment="Center"
-                         Grid.Row="0" Grid.Column="1"/>
-                </Grid>
-                <Grid Margin="0,50,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+                        <Button Content="Add Book" FontSize="20"
+                             Height="50" Width="200" Margin="0,0,0,0"
+                             BorderThickness="1" BorderBrush="PeachPuff"
+                             Foreground="PeachPuff" Background="#272537"
+                             VerticalContentAlignment="Center"
+                             Grid.Row="0" Grid.Column="0" Command="{Binding AddBook}"/>
+                        <Button Content="Check Out" FontSize="20"
+                             Height="50" Width="200" Margin="0,0,0,0"
+                             BorderThickness="1" BorderBrush="PeachPuff"
+                             Foreground="PeachPuff" Background="#272537"
+                             VerticalContentAlignment="Center"
+                             Grid.Row="0" Grid.Column="1" Command="{Binding CheckOut}"/>
+                        <Button Content="Check In" FontSize="20"
+                             Height="50" Width="200" Margin="0,0,0,0"
+                             BorderThickness="1" BorderBrush="PeachPuff"
+                             Foreground="PeachPuff" Background="#272537"
+                             VerticalContentAlignment="Center"
+                             Grid.Row="0" Grid.Column="2" Command="{Binding CheckIn}"/>
 
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
-                    </Grid.RowDefinitions>
-                    <Button Content="Add Book" FontSize="20"
-                         Height="50" Width="200" Margin="0,0,0,0"
-                         BorderThickness="1" BorderBrush="PeachPuff"
-                         Foreground="PeachPuff" Background="#272537"
-                         VerticalContentAlignment="Center"
-                         Grid.Row="0" Grid.Column="0" Command="{Binding AddBook}"/>
-                    <Button Content="Check Out" FontSize="20"
-                         Height="50" Width="200" Margin="0,0,0,0"
-                         BorderThickness="1" BorderBrush="PeachPuff"
-                         Foreground="PeachPuff" Background="#272537"
-                         VerticalContentAlignment="Center"
-                         Grid.Row="0" Grid.Column="1" Command="{Binding CheckOut}"/>
-                    <Button Content="Check In" FontSize="20"
-                         Height="50" Width="200" Margin="0,0,0,0"
-                         BorderThickness="1" BorderBrush="PeachPuff"
-                         Foreground="PeachPuff" Background="#272537"
-                         VerticalContentAlignment="Center"
-                         Grid.Row="0" Grid.Column="2" Command="{Binding CheckIn}"/>
+                    </Grid>
+                    <Grid Margin="0,25,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
 
-                </Grid>
-                <Grid Margin="0,25,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
-                    </Grid.RowDefinitions>
+                        <Button Content="View all books" FontSize="20"
+                             Height="50" Width="200"
+                             BorderThickness="1" BorderBrush="PeachPuff"
+                             Foreground="PeachPuff" Background="#272537"
+                             VerticalContentAlignment="Center" Margin="0,0,0,0"
+                             Command="{Binding ViewAllBooks}"/>
 
-                    <Button Content="View all books" FontSize="20"
-                         Height="50" Width="200"
-                         BorderThickness="1" BorderBrush="PeachPuff"
-                         Foreground="PeachPuff" Background="#272537"
-                         VerticalContentAlignment="Center" Margin="0,0,0,0"
-                         Command="{Binding ViewAllBooks}"/>
+                        <Button Content="Import Books" FontSize="20"
+                                Grid.Column="1"
+                             Height="50" Width="200"
+                             BorderThickness="1" BorderBrush="PeachPuff"
+                             Foreground="PeachPuff" Background="#272537"
+                            VerticalContentAlignment="Center" Margin="0,0,0,0"
+                             Command="{Binding OpenImportWin}"/>
 
-                    <Button Content="Import Books" FontSize="20"
-                            Grid.Column="1"
-                         Height="50" Width="200"
-                         BorderThickness="1" BorderBrush="PeachPuff"
-                         Foreground="PeachPuff" Background="#272537"
-                        VerticalContentAlignment="Center" Margin="0,0,0,0"
-                         Command="{Binding OpenImportWin}"/>
+                        <Button Content="Status History" FontSize="20"
+                                Grid.Column="2"
+                             Height="50" Width="200"
+                             BorderThickness="1" BorderBrush="PeachPuff"
+                             Foreground="PeachPuff" Background="#272537"
+                            VerticalContentAlignment="Center" Margin="0,0,0,0"
+                             Command="{Binding StatusHistoryCheck}"/>
 
-                    <Button Content="Status History" FontSize="20"
-                            Grid.Column="2"
-                         Height="50" Width="200"
-                         BorderThickness="1" BorderBrush="PeachPuff"
-                         Foreground="PeachPuff" Background="#272537"
-                        VerticalContentAlignment="Center" Margin="0,0,0,0"
-                         Command="{Binding StatusHistoryCheck}"/>
+                        <Button Content="Delete Book" FontSize="20"
+                                Grid.Column="3"
+                             Height="50" Width="200"
+                             BorderThickness="1" BorderBrush="PeachPuff"
+                             Foreground="PeachPuff" Background="#272537"
+                            VerticalContentAlignment="Center" Margin="0,0,0,0"
+                             Command="{Binding DeleteBook}"/>
+                    </Grid>
 
-                    <Button Content="Delete Book" FontSize="20"
-                            Grid.Column="3"
-                         Height="50" Width="200"
-                         BorderThickness="1" BorderBrush="PeachPuff"
-                         Foreground="PeachPuff" Background="#272537"
-                        VerticalContentAlignment="Center" Margin="0,0,0,0"
-                         Command="{Binding DeleteBook}"/>
-                </Grid>
-
-            </StackPanel>
-        </Grid>
-    </Border>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Viewbox>
 </Window>

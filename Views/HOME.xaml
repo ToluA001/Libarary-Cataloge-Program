@@ -20,22 +20,42 @@
             <DockPanel Grid.Column="0" Background="#EEE8AA" LastChildFill="True" Margin="0,0,10,0">
                 <Grid Grid.Column="0" Background="#EEE8AA">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+
                     </Grid.RowDefinitions>
 
-                    <Button Content="Go to Test Page"
+                    <Button Content="Import Page" Grid.Row="0"
                         Click="GoToTestPage_Click"
                         Margin="10"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Top"
-                        FontSize="20" 
+                        FontSize="15" 
                             BorderBrush="#2F4F4F"
                             Foreground="#EEE8AA"
-                            Background="#2F4F4F"
+                            Background="#2f4d4d"
                            />
-
-
+                    <Button Content="View Library " Grid.Row="1"
+                        Click="GoToTestPage_Click"
+                        Margin="10"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Top"
+                        FontSize="15" 
+                            BorderBrush="#2F4F4F"
+                            Foreground="#EEE8AA"
+                            Background="#2f4d4d"
+                           />
+                    <Button Content="Status History " Grid.Row="2"
+                        Click="GoToTestPage_Click"
+                        Margin="10"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Top"
+                        FontSize="15" 
+                            BorderBrush="#2F4F4F"
+                            Foreground="#EEE8AA"
+                            Background="#2f4d4d"
+                           />
                 </Grid>
             </DockPanel>
 
@@ -43,7 +63,7 @@
             <StackPanel Grid.Column="1">
                 <Label FontSize="36" FontFamily="Times New Roman" 
                        FontWeight="DemiBold" Foreground="#2F4F4F"
-                       HorizontalAlignment="Center" Margin="0,10">
+                       HorizontalAlignment="Center" Margin="0,10" VerticalAlignment="Center">
                     Welcome to your library
                 </Label>
 
@@ -80,10 +100,27 @@
                              BorderBrush="#A0522D" BorderThickness="1"
                              Background="#FFF8F0" Foreground="Black" MinWidth="100" />
                 </Grid>
+                
+                <!-- BUTTONS -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Content="Add Book" MinWidth="40" MinHeight="25" Margin="0,0,5,0"
+                           Background="#FFF8F0" BorderBrush="#2F4F4F" FontFamily="Times New Roman" FontStretch="Expanded" Command="{Binding AddBook}"/>
+                    
+                    <Button Grid.Column="1" Content="Check IN" MinWidth="40" MinHeight="25" Margin="0,0,5,0"
+                           Background="#FFF8F0" BorderBrush="#2F4F4F" FontFamily="Times New Roman" FontStretch="Expanded" Command="{Binding CheckOut}"/>
+                    
+                    <Button Grid.Column="2" Content="Check OUT" MinWidth="40" MinHeight="25" Margin="0,0,5,0"
+                           Background="#FFF8F0" BorderBrush="#2F4F4F" FontFamily="Times New Roman" FontStretch="Expanded" Command="{Binding CheckIn}"/>
+                </Grid>
+                
             </StackPanel>
-            
-
         </Grid>
+        
         <Frame x:Name="MainFrame"
           NavigationUIVisibility="Hidden"/>
             

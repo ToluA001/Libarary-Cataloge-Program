@@ -139,6 +139,7 @@ namespace Libarary_Cataloge_Program.ViewModel
                     else
                     {
                         db.Add(book);
+                        MessageBox.Show("Book Added Successfully");
                     }
                     db.SaveChanges();
                 }

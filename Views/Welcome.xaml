@@ -57,14 +57,23 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Content="Add Book" MinWidth="40" MinHeight="25" Margin="0,0,5,0"
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    
+                </Grid.RowDefinitions>
+                <Button Grid.Column="0" Grid.Row="0"  Content="Add Book" MinWidth="40" MinHeight="25" Margin="0,0,5,0"
                Background="#FFF8F0" BorderBrush="#2F4F4F" FontFamily="Times New Roman" FontStretch="Expanded" Command="{Binding AddBook}"/>
 
-                <Button Grid.Column="1" Content="Check IN" MinWidth="40" MinHeight="25" Margin="0,0,5,0"
+                <Button Grid.Column="1" Grid.Row="0" Content="Check IN" MinWidth="40" MinHeight="25" Margin="0,0,5,0"
                Background="#FFF8F0" BorderBrush="#2F4F4F" FontFamily="Times New Roman" FontStretch="Expanded" Command="{Binding CheckOut}"/>
 
-                <Button Grid.Column="2" Content="Check OUT" MinWidth="40" MinHeight="25" Margin="0,0,5,0"
+                <Button Grid.Column="2" Grid.Row="0" Content="Check OUT" MinWidth="40" MinHeight="25" Margin="0,0,5,0"
                Background="#FFF8F0" BorderBrush="#2F4F4F" FontFamily="Times New Roman" FontStretch="Expanded" Command="{Binding CheckIn}"/>
+
+                <Button Grid.Column="0" Grid.Row="1" Content="Delete" MinWidth="40" MinHeight="25" Margin="0,20,5,0"
+               Background="#FFF8F0" BorderBrush="#2F4F4F" FontFamily="Times New Roman" FontStretch="Expanded" Command="{Binding DeleteBook}"/>
 
             </Grid>
 

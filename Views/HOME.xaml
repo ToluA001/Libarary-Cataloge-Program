@@ -23,6 +23,7 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
 
                     </Grid.RowDefinitions>
 
@@ -56,6 +57,18 @@
                             Foreground="#EEE8AA"
                             Background="#2f4d4d"
                            />
+
+                    <Button Content="Wipe library" Grid.Row="3"
+                        Command="{Binding WipeLibrary}"
+                        Margin="10"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Top"
+                        FontSize="15" 
+                            BorderBrush="#2F4F4F"
+                            Foreground="#EEE8AA"
+                            Background="Maroon"
+                           />
+
                 </Grid>
             </DockPanel>
 
@@ -116,6 +129,7 @@
                     
                     <Button Grid.Column="2" Content="Check OUT" MinWidth="40" MinHeight="25" Margin="0,0,5,0"
                            Background="#FFF8F0" BorderBrush="#2F4F4F" FontFamily="Times New Roman" FontStretch="Expanded" Command="{Binding CheckIn}"/>
+                    
                 </Grid>
                 
             </StackPanel>

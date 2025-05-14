@@ -27,7 +27,7 @@ namespace Libarary_Cataloge_Program.Views
         }
         private void GoToTestPage_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new TESTPAGE());
+            MainFrame.Navigate(new ImportPage());
         }
     }
 }

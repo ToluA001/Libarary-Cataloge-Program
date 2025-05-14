@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Libarary_Cataloge_Program.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +17,14 @@ using System.Windows.Shapes;
 namespace Libarary_Cataloge_Program.Views
 {
     /// <summary>
-    /// Interaction logic for TESTPAGE.xaml
+    /// Interaction logic for ImportPage.xaml
     /// </summary>
-    public partial class TESTPAGE : Page
+    public partial class ImportPage : Page
     {
-        public TESTPAGE()
+        public ImportPage()
         {
             InitializeComponent();
+            DataContext = new ImportViewModel();
         }
     }
 }

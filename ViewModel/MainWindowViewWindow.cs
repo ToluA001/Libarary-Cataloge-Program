@@ -48,6 +48,7 @@ namespace Libarary_Cataloge_Program.ViewModel
             OpenImportWin = new RelayCommand(Open);
             StatusHistoryCheck = new RelayCommand(Check);
             DeleteBook = new RelayCommand(Delete);
+            WipeLibrary = new RelayCommand(Wipe);
         }
 
         public ICommand ViewAllBooks { get; }
@@ -57,18 +58,29 @@ namespace Libarary_Cataloge_Program.ViewModel
         public ICommand OpenImportWin { get; }
         public ICommand StatusHistoryCheck { get; }
         public ICommand DeleteBook { get; }
+        public ICommand WipeLibrary { get; }
+
 
         private void Open()
         {
             ImportFile importFile = new ImportFile();
             importFile.Show();
-
-
         }
         private void See()
         {
             Window1 window1 = new Window1();
             window1.Show();            
+        }
+
+        private void Wipe()
+        {
+            using(var db = new LibDataBase())
+            {
+                var allBooks = db.Books.ToList();
+                db.Books.RemoveRange(allBooks);
+                db.SaveChanges();
+                MessageBox.Show("Library cleared");
+            }
         }
         private void Out() 
         {

@@ -11,28 +11,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Libarary_Cataloge_Program.Views
 {
     /// <summary>
-    /// Interaction logic for HOME.xaml
+    /// Interaction logic for Welcome.xaml
     /// </summary>
-    public partial class HOME : Window
+    public partial class Welcome : Page
     {
-        public HOME()
+        public Welcome()
         {
             InitializeComponent();
             DataContext = new MainWindowViewWindow();
-        }
-        private void GoToTestPage_Click(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new ImportPage());
-        }
-
-        private void GoToHomePage_Click(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(new Welcome());
         }
     }
 }

@@ -41,37 +41,59 @@ namespace Libarary_Cataloge_Program.ViewModel
         }
         public MainWindowViewWindow( ) 
         {
-            ViewAllBooks = new RelayCommand(See);
             AddBook = new RelayCommand(Add);
             CheckOut = new RelayCommand(Out);
             CheckIn = new RelayCommand(In);
-            OpenImportWin = new RelayCommand(Open);
             StatusHistoryCheck = new RelayCommand(Check);
             DeleteBook = new RelayCommand(Delete);
             WipeLibrary = new RelayCommand(Wipe);
+            SearchLibrary = new RelayCommand(Search);
         }
 
-        public ICommand ViewAllBooks { get; }
         public ICommand AddBook { get; }
         public ICommand CheckIn { get; }
         public ICommand CheckOut { get; }
-        public ICommand OpenImportWin { get; }
         public ICommand StatusHistoryCheck { get; }
         public ICommand DeleteBook { get; }
         public ICommand WipeLibrary { get; }
-
-
-        private void Open()
+        public ICommand SearchLibrary { get; }
+        private void Search()
         {
-            ImportFile importFile = new ImportFile();
-            importFile.Show();
-        }
-        private void See()
-        {
-            Window1 window1 = new Window1();
-            window1.Show();            
-        }
+            using(var db = new LibDataBase())
+            {
+                var allBooks = db.Books.ToList();
 
+                if (NameOfBook != null)
+                {
+
+                    foreach (var book in allBooks)
+                    {
+                        if (book.Title.Equals(NameOfBook))
+                        {
+                            MessageBox.Show(book.ToString());
+                        }
+                        else
+                        {
+                            MessageBox.Show("This book doesn't exist");
+                        }
+
+                    }
+                }else if(AutherLastName != null)
+                {
+                    foreach (var book in allBooks)
+                    {
+                        if (book.Author.Equals(AutherLastName))
+                        {
+                            MessageBox.Show(book.ToString());
+                        }
+                        else
+                        {
+                            MessageBox.Show("This book doesn't exist");
+                        }
+                    }
+                }
+            }
+        }
         private void Wipe()
         {
             using(var db = new LibDataBase())
@@ -150,8 +172,7 @@ namespace Libarary_Cataloge_Program.ViewModel
         private void Check()
         {
             WSOB = repository.GetBookByTitleAndAuthor(NameOfBook,AutherLastName);
-            
-            
+       
         }
 
         private void Delete()

@@ -34,5 +34,10 @@ namespace Libarary_Cataloge_Program.Views
         {
             MainFrame.Navigate(new Welcome());
         }
+
+        private void GoToViewAllPages_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate((new ViewLibrary()));
+        }
     }
 }

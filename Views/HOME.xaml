@@ -51,7 +51,7 @@
                             Background="#2f4d4d"
                            />
                     <Button Content="View Library " Grid.Row="2"
-                        Click="GoToTestPage_Click"
+                        Click="GoToViewAllPages_Click"
                         Margin="10"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Top"

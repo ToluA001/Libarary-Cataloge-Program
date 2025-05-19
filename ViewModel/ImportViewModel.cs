@@ -14,8 +14,6 @@ namespace Libarary_Cataloge_Program.ViewModel
 {
     class ImportViewModel:BaseViewModel
     {
-        BookRepository repository = BookRepository.Instance;
-
 
         private string _FilePath;
         public string FilePath
@@ -37,8 +35,6 @@ namespace Libarary_Cataloge_Program.ViewModel
 
         private void Imprt()
         {
-            BookRepository.ImportBooksFromCVS(FilePath);
-
             using (var db = new LibDataBase())
             {
                 

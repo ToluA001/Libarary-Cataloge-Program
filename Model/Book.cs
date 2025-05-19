@@ -37,7 +37,7 @@ namespace Libarary_Cataloge_Program.Model
         // You can override the ToString() method to provide a custom string representation of the book.
         public override string ToString()
         {
-            return $"{Title} by {Author} status: {Check} Date created: {DateCreated}";
+            return $"{Title} by {Author} status: {Check} Date Added: {DateCreated}";
         }
 
         public void Checkout ()

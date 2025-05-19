@@ -1,0 +1,23 @@
+﻿<Page x:Class="Libarary_Cataloge_Program.Views.ViewLibrary"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Libarary_Cataloge_Program.Views"
+      mc:Ignorable="d"
+      Title="ViewLibrary" Height="450" Width="800">
+    <Grid >
+        <DataGrid ItemsSource="{Binding BooksString}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  Margin="20"
+                  HeadersVisibility="Column"
+                  IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="*"/>
+                <DataGridTextColumn Header="Author" Binding="{Binding Author}" Width="*"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

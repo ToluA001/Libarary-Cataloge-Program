@@ -39,5 +39,15 @@ namespace Libarary_Cataloge_Program.Views
         {
             MainFrame.Navigate((new ViewLibrary()));
         }
+        
+        private void GoToLoginPage_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate((new Login()));
+        }
+        
+        private void GoToCreateLibraryPage_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate((new CreateLib()));
+        }
     }
 }

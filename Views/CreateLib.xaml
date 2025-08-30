@@ -6,7 +6,13 @@
       xmlns:local="clr-namespace:Libarary_Cataloge_Program.Views"
       mc:Ignorable="d"
       Title="CreateLib" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+      <StackPanel Orientation="Vertical">
+          <TextBox Text="{Binding LibName}"
+                   FontSize="16" Margin="10"
+                   BorderBrush="#A0522D" BorderThickness="1"
+                   Background="#FFF8F0" Foreground="Black" MinWidth="50" />
+          <Button Content="Create Lib" MinWidth="100" MinHeight="50" Background="#FFF8F0" 
+                  BorderBrush="#2F4F4F" FontFamily="Times New Roman" Command="{Binding SignUp}"/>
+          
+      </StackPanel>
 </Page>

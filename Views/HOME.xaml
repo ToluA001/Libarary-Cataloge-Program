@@ -25,8 +25,8 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
-
-
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     
                     <Button Content="Home Page" Grid.Row="0"
@@ -81,20 +81,33 @@
                             Foreground="#EEE8AA"
                             Background="Maroon"
                            />
-
+                    <Button Content="Login" Grid.Row="5"
+                            Click="GoToLoginPage_Click"
+                            Margin="10"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Top"
+                            FontSize="15" 
+                            BorderBrush="#2F4F4F"
+                            Foreground="#EEE8AA"
+                            Background="Maroon"
+                    />
+                    <Button Content="Create Library" Grid.Row="6"
+                            Click="GoToCreateLibraryPage_Click"
+                            Margin="10"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Top"
+                            FontSize="15" 
+                            BorderBrush="#2F4F4F"
+                            Foreground="#EEE8AA"
+                            Background="#2f4d4d"
+                    />
                 </Grid>
             </DockPanel>
-
             <!-- Right Panel -->
             <StackPanel Grid.Column="1">
                 <Frame x:Name="MainFrame"
                 NavigationUIVisibility="Hidden"/>
-
             </StackPanel>
         </Grid>
-        
-
-            
-            
     </Grid>
 </Window>

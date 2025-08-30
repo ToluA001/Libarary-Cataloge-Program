@@ -3,6 +3,7 @@ using System;
 using Libarary_Cataloge_Program.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Libarary_Cataloge_Program.Migrations
 {
     [DbContext(typeof(LibDataBase))]
-    partial class LibDataBaseModelSnapshot : ModelSnapshot
+    [Migration("20250813143008_LibID")]
+    partial class LibID
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.4");

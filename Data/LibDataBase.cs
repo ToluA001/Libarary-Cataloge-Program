@@ -35,12 +35,10 @@ namespace Libarary_Cataloge_Program.Data
                 if(db.GetBookByTitleAndAuthor(book.Title, book.Author) != null)
                 {
                     return true;
-                    //book exists in library 
                 }
                 else
                 {
                     return false; 
-                    //book doesn't exist in library
                 }
             }
 

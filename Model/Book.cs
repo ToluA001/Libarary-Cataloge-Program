@@ -14,6 +14,8 @@ namespace Libarary_Cataloge_Program.Model
 
         public bool Status { get; set; }
         public string Check { get; set; } 
+        
+        public int LibraryID { get; set; } //the ID of the Library the book belongs to 
 
         public DateTime DateCreated { get; set; }
 

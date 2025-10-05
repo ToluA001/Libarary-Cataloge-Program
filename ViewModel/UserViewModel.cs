@@ -50,13 +50,28 @@ class UserViewModel:BaseViewModel
     {
         SignUp = new RelayCommand(signup);
         LogIn = new RelayCommand(login);
+        LogOut = new RelayCommand(logout);
         NewLib = new RelayCommand(create);
     }
-    
+    public ICommand LogOut { get; }
     public ICommand NewLib { get; }
     public ICommand SignUp { get; }
     public ICommand LogIn { get; }
 
+    private void logout()
+    {
+        // need to log the user out 
+        //  find the userin the db 
+        // change their logged status
+        using (var db = new AuthDb())
+        {
+            var user = db.users.FirstOrDefault(u => u.Username.ToLower() == Username.ToLower());
+            user.IsLoggedIn = false;
+            db.users.Update(user);
+            db.SaveChanges();
+            MessageBox.Show("You have been logged out");
+        }
+    }
     private void create()
     {
         MessageBox.Show(Username);

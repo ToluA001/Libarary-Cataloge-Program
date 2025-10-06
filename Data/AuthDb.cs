@@ -1,4 +1,5 @@
-﻿using Libarary_Cataloge_Program.Model;
+﻿using System.IO;
+using Libarary_Cataloge_Program.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace Libarary_Cataloge_Program.Data;
@@ -7,9 +8,16 @@ public class AuthDb:DbContext
 {
     
     public DbSet<User> users {get; set;}
-    
+
+    // Changing this to be a relative path
     protected override void OnConfiguring(DbContextOptionsBuilder options)
-        => options.UseSqlite("Data Source=C:\\Users\\Tolu\\Desktop\\PROJ\\Libarary Cataloge Program\\Data\\User.db");
+    {
+        string userDbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "User.db");
+
+        Directory.CreateDirectory(Path.GetDirectoryName(userDbPath));
+        
+        options.UseSqlite($"Data Source={userDbPath}");
+    }
     
     public AuthDb()
     {

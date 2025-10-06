@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using Libarary_Cataloge_Program.Model;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,10 +11,18 @@ namespace Libarary_Cataloge_Program.Data
 {
     public class LibDataBase : DbContext
     {
+        // this database is a database of books 
         public DbSet<Book> Books { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite("Data Source=C:\\Users\\Tolu\\Desktop\\PROJ\\Libarary Cataloge Program\\Data\\library.db");
+        {
+            string libDbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "library.db");
+            
+            Directory.CreateDirectory(Path.GetDirectoryName(libDbPath));
+            
+            options.UseSqlite($"Data Source={libDbPath}");
+        }
+            
 
         public LibDataBase()
         {

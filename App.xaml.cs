@@ -14,36 +14,7 @@ namespace Libarary_Cataloge_Program
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            base.OnStartup(e);
-            
-            // Initialize all databases
-            try
-            {
-                using (var context = new LibDataBase())
-                {
-                    context.Database.Migrate();
-                }
-                
-                using (var context = new AuthDb())
-                {
-                    context.Database.Migrate();
-                }
-                
-                using (var context = new Libs())
-                {
-                    context.Database.Migrate();
-                }
-                
-                using (var context = new ULDB())
-                {
-                    context.Database.Migrate();
-                }
-            }
-            catch (System.Exception ex)
-            {
-                MessageBox.Show($"Database initialization error: {ex.Message}\n\n{ex.StackTrace}", 
-                    "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+
         }
     }
 }

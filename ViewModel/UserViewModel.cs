@@ -46,8 +46,21 @@ class UserViewModel:BaseViewModel
             OnPropertyChanged();
         }
     }
+    
+    public string _currentLoggedInUser;
+    public string CurrentLoggedInUser
+    {
+        get { return _currentLoggedInUser; }
+        set
+        {
+            _currentLoggedInUser = value;
+            OnPropertyChanged();
+        }
+    }
+    
     public UserViewModel()
     {
+        String lastLoggedIn = Username;
         SignUp = new RelayCommand(signup);
         LogIn = new RelayCommand(login);
         LogOut = new RelayCommand(logout);
@@ -60,17 +73,31 @@ class UserViewModel:BaseViewModel
 
     private void logout()
     {
-        // need to log the user out 
-        //  find the userin the db 
-        // change their logged status
+        // Log out any currently logged-in user(s) in the DB and clear local state
         using (var db = new AuthDb())
         {
-            var user = db.users.FirstOrDefault(u => u.Username.ToLower() == Username.ToLower());
-            user.IsLoggedIn = false;
-            db.users.Update(user);
+            var loggedInUsers = db.users.Where(u => u.IsLoggedIn).ToList();
+
+            if (loggedInUsers.Count == 0)
+            {
+                MessageBox.Show("No one is logged in");
+                return;
+            }
+
+            foreach (var u in loggedInUsers)
+            {
+                u.IsLoggedIn = false;
+            }
+
             db.SaveChanges();
-            MessageBox.Show("You have been logged out");
         }
+
+        // Clear local/session fields so UI reflects logged-out state
+        CurrentLoggedInUser = string.Empty;
+        Username = string.Empty;
+        Password = string.Empty;
+
+        MessageBox.Show("You have been logged out");
     }
     private void create()
     {
@@ -88,7 +115,9 @@ class UserViewModel:BaseViewModel
             var user = db.users.FirstOrDefault(u => u.Username.ToLower() == Username.ToLower()); // searches for if the username is in the db at all 
             if (user != null && user.VerifyPassword(Password))
             {
+                CurrentLoggedInUser = user.Username;
                 user.IsLoggedIn = true;
+                MessageBox.Show(CurrentLoggedInUser);
                 db.SaveChanges();
                 MessageBox.Show("Login Success!");
             }
@@ -113,6 +142,8 @@ class UserViewModel:BaseViewModel
             {
                 db.Add(x);
                 x.IsLoggedIn = true;
+                CurrentLoggedInUser = x.Username;
+                MessageBox.Show(CurrentLoggedInUser);
                 db.SaveChanges();
                 MessageBox.Show("Successfully signed up");
             }

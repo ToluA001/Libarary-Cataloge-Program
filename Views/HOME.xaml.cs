@@ -23,7 +23,7 @@ namespace Libarary_Cataloge_Program.Views
         public HOME()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewWindow();
+            DataContext = new UserViewModel();
         }
         private void GoToTestPage_Click(object sender, RoutedEventArgs e)
         {

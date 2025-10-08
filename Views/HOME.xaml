@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Libarary_Cataloge_Program.Views"
         mc:Ignorable="d"
         Title="HOME" ResizeMode="CanResize"
-        Background="Transparent" WindowStyle="SingleBorderWindow" Height="306" Width="531">
+        Background="Transparent" WindowStyle="SingleBorderWindow" MinWidth="700" MinHeight="450">
     <Grid Background="#FFF8F0" >
 
         <Grid>
@@ -103,7 +103,7 @@
                             Background="#2f4d4d"
                     />
                     <Button Content="Log-Out" Grid.Row="7"
-                            Click="GoToCreateLibraryPage_Click"
+                            Command="{Binding LogOut}"
                             Margin="10"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Top"
@@ -115,10 +115,19 @@
                 </Grid>
             </DockPanel>
             <!-- Right Panel -->
-            <StackPanel Grid.Column="1">
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
                 <Frame x:Name="MainFrame"
-                NavigationUIVisibility="Hidden"/>
-            </StackPanel>
+                       Grid.Row="0" Grid.Column="0"
+                       NavigationUIVisibility="Hidden"
+                       HorizontalAlignment="Stretch"
+                       VerticalAlignment="Stretch" />
+            </Grid>
         </Grid>
     </Grid>
 </Window>

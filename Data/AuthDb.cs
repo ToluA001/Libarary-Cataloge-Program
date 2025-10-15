@@ -1,27 +1,24 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Libarary_Cataloge_Program.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace Libarary_Cataloge_Program.Data;
 
-public class AuthDb:DbContext
+public class AuthDb : DbContext
 {
-    
-    public DbSet<User> users {get; set;}
+    public DbSet<User> users { get; set; }
 
-    // Changing this to be a relative path
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
         string userDbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "User.db");
-
-        Directory.CreateDirectory(Path.GetDirectoryName(userDbPath));
-        
+        Directory.CreateDirectory(Path.GetDirectoryName(userDbPath)!);
         options.UseSqlite($"Data Source={userDbPath}");
     }
-    
+
     public AuthDb()
     {
-        //Database.EnsureCreated();
+        Database.EnsureCreated();
     }
 
     public bool DoesUserExist(string name)
@@ -35,5 +32,4 @@ public class AuthDb:DbContext
             return false;
         }
     }
-    
 }

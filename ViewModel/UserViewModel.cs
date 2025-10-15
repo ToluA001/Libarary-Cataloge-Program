@@ -2,6 +2,7 @@
 using Libarary_Cataloge_Program.Data;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security;
 using System.Text;
@@ -130,6 +131,7 @@ class UserViewModel:BaseViewModel
 
     private void signup()
     {
+
         User x = new User(Username);
         x.SetPassword(Password);
         using (var db = new AuthDb())

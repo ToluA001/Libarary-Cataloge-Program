@@ -26,7 +26,7 @@ namespace Libarary_Cataloge_Program.Data
 
         public LibDataBase()
         {
-            //Database.EnsureCreated(); // ← this line creates the DB & tables if they don’t exist
+            Database.EnsureCreated(); // ← this line creates the DB & tables if they don’t exist
         }
 
         public Book GetBookByTitleAndAuthor(string title, string author)

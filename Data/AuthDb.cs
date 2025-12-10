@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Windows;
 using Libarary_Cataloge_Program.Model;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +13,9 @@ public class AuthDb : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
         string userDbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "User.db");
+        
         Directory.CreateDirectory(Path.GetDirectoryName(userDbPath)!);
+        
         options.UseSqlite($"Data Source={userDbPath}");
     }
 

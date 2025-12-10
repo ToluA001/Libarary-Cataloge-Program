@@ -102,11 +102,25 @@ class UserViewModel:BaseViewModel
     }
     private void create()
     {
-        MessageBox.Show(Username);
+        // create a new library
+        
+        MessageBox.Show("You are attempting to create a new library");
+        
         using (var db = new AuthDb())
         {
             var user = db.users.FirstOrDefault(u => u.Username.ToLower() == Username.ToLower());
             MessageBox.Show(user?.Username);
+        }
+
+        using (var libDb = new Libs())
+        {
+            using (var userDb = new AuthDb())
+            {
+                // I need to get the ID of the user that is logged in
+                var user = userDb.users.FirstOrDefault(u => u.Username.ToLower() == Username.ToLower());
+                int UserId = user.Id; // this is the ID of the user that is logged in
+            }
+            
         }
     }
     private void login()
@@ -131,7 +145,6 @@ class UserViewModel:BaseViewModel
 
     private void signup()
     {
-
         User x = new User(Username);
         x.SetPassword(Password);
         using (var db = new AuthDb())

@@ -12,7 +12,7 @@
                    BorderBrush="#A0522D" BorderThickness="1"
                    Background="#FFF8F0" Foreground="Black" MinWidth="50" />
           <Button Content="Create Lib" MinWidth="100" MinHeight="50" Background="#FFF8F0" 
-                  BorderBrush="#2F4F4F" FontFamily="Times New Roman" Command="{Binding SignUp}"/>
+                  BorderBrush="#2F4F4F" FontFamily="Times New Roman" Command="{Binding NewLib}"/>
           
       </StackPanel>
 </Page>

@@ -11,7 +11,7 @@ public class Libs:DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
-        string libDb = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "library.db");
+        string libDb = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "libs.db");
         
         Directory.CreateDirectory(Path.GetDirectoryName(libDb));
         
@@ -20,7 +20,7 @@ public class Libs:DbContext
 
     public Libs()
     {
-        
+        Database.EnsureCreated();
     }
     
 }

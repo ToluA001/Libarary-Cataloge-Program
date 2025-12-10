@@ -21,6 +21,6 @@ public class ULDB: DbContext
 
     public ULDB()
     {
-        
+        Database.EnsureCreated();   
     }
 }

@@ -23,7 +23,7 @@ public class AuthDb : DbContext
     {
         Database.EnsureCreated();
     }
-
+//--------------------------------------------------------------------------
     public bool DoesUserExist(string name)
     {
         if (users.FirstOrDefault(u => u.Username.ToLower() == name.ToLower()) != null)

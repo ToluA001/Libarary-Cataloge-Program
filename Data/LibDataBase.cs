@@ -7,6 +7,7 @@ using System.IO;
 using Libarary_Cataloge_Program.Model;
 using Microsoft.EntityFrameworkCore;
 
+// THIS IS A DATABASE THAT CONTAINS BOOKS 
 namespace Libarary_Cataloge_Program.Data
 {
     public class LibDataBase : DbContext
@@ -31,6 +32,7 @@ namespace Libarary_Cataloge_Program.Data
 
         public Book GetBookByTitleAndAuthor(string title, string author)
         {
+            
             return Books.FirstOrDefault(b =>
                 b.Title.ToLower() == title.ToLower() &&
                 b.Author.ToLower() == author.ToLower());
@@ -38,7 +40,6 @@ namespace Libarary_Cataloge_Program.Data
         }
         public bool DoesBookExist(Book book)
         {
-
             using (var db = new LibDataBase()) 
             { 
                 if(db.GetBookByTitleAndAuthor(book.Title, book.Author) != null)

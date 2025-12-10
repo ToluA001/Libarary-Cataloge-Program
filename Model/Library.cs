@@ -7,6 +7,11 @@ public class Library
     public string CreatorId { get; set; }
 
     public Library() { }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="creatorID"></param>
     public Library(string name, string creatorID)
     {
         Name = name;

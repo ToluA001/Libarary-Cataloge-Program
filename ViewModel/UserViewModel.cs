@@ -100,28 +100,49 @@ class UserViewModel:BaseViewModel
 
         MessageBox.Show("You have been logged out");
     }
+    
+    /// <summary>
+    /// Creates a new Library|
+    /// Adds the Library to the libs db|
+    /// Creates a connection in the UL db
+    /// </summary>
     private void create()
     {
         // create a new library
-        
+        int UserID = 1;
         MessageBox.Show("You are attempting to create a new library");
         
-        using (var db = new AuthDb())
+        using (var userDb = new AuthDb())
         {
-            var user = db.users.FirstOrDefault(u => u.Username.ToLower() == Username.ToLower());
-            MessageBox.Show(user?.Username);
+            // I need to get the ID of the user that is logged in
+            var user = userDb.users.FirstOrDefault(u => u.IsLoggedIn);
+            if (user == null)
+            {
+                MessageBox.Show("Please log in to create a library.");
+                return;
+            }
+            int UserId = user.Id; // this is the ID of the user that is logged in
+
+            using (var LibDB = new Libs())
+            {
+                Library newLib = new Library(LibName, UserId.ToString());
+                LibDB.Add(newLib);
+                int LibID = newLib.Id;
+                MessageBox.Show("Library Created Successfully");
+                LibDB.SaveChanges();
+                
+                using (var ULDb = new ULDB())
+                {
+                    UserLibrary newConnection = new UserLibrary(UserId.ToString(), LibID.ToString(), "Admin");
+                    ULDb.Add(newConnection);
+                    ULDb.SaveChanges();
+                    MessageBox.Show("Connection Created Successfully");
+                }
+            }
         }
 
-        using (var libDb = new Libs())
-        {
-            using (var userDb = new AuthDb())
-            {
-                // I need to get the ID of the user that is logged in
-                var user = userDb.users.FirstOrDefault(u => u.Username.ToLower() == Username.ToLower());
-                int UserId = user.Id; // this is the ID of the user that is logged in
-            }
-            
-        }
+
+        
     }
     private void login()
     {

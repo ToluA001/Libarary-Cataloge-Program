@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using Microsoft.EntityFrameworkCore;
 
+// THIS IS A DATABASE THAT CONTAINS LIBS
 namespace Libarary_Cataloge_Program.Data;
 using Libarary_Cataloge_Program.Model;
 

@@ -7,6 +7,12 @@ public class UserLibrary
     public string LibId { get; set; }
     public string Role { get; set; }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <param name="libId"></param>
+    /// <param name="role"></param>
     public UserLibrary(string userId, string libId, string role)
     {
         UserId = userId;

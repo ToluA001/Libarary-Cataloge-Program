@@ -109,14 +109,13 @@ class UserViewModel:BaseViewModel
     private void create()
     {
         // create a new library
-        int UserID = 1;
         MessageBox.Show("You are attempting to create a new library");
         
         using (var userDb = new AuthDb())
         {
-            // I need to get the ID of the user that is logged in
+            // I need to get the ID of the user that is logged inr
             var user = userDb.users.FirstOrDefault(u => u.IsLoggedIn);
-            if (user == null)
+            if (user == null)  
             {
                 MessageBox.Show("Please log in to create a library.");
                 return;
@@ -127,9 +126,10 @@ class UserViewModel:BaseViewModel
             {
                 Library newLib = new Library(LibName, UserId.ToString());
                 LibDB.Add(newLib);
+                LibDB.SaveChanges();
                 int LibID = newLib.Id;
                 MessageBox.Show("Library Created Successfully");
-                LibDB.SaveChanges();
+
                 
                 using (var ULDb = new ULDB())
                 {

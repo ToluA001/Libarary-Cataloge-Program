@@ -19,11 +19,7 @@ namespace Libarary_Cataloge_Program.Model
         {
             // Initialize an empty list to store books in memory
             Library = new List<Book>();
-            // Add some initial books for demonstration purposes
-            //Book x = new Book("book1", "auth1");
-            //Book y = new Book("book2", "auth2");
-            //books.Add(x);
-            //books.Add(y);
+
         }
         public static BookRepository Instance
         {

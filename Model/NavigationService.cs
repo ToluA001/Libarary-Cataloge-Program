@@ -16,6 +16,10 @@ namespace Libarary_Cataloge_Program.Model
             _mainFrame = frame;
         }
 
+        /// <summary>
+        /// Open the page.
+        /// </summary>
+        /// <param name="pageName">string</param>
         public static void NavigateTo(string pageName)
         {
             _mainFrame.Navigate(new Uri($"{pageName}.xaml", UriKind.Relative));

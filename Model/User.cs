@@ -12,6 +12,10 @@ public class User
     
     public bool IsLoggedIn {get; set;}
 
+    /// <summary>
+    /// Encrypt the given password.
+    /// </summary>
+    /// <param name="password">String</param>
     public void SetPassword(String password)
     {
         using (var rang = RandomNumberGenerator.Create())
@@ -26,6 +30,11 @@ public class User
         }
     }
 
+    /// <summary>
+    /// Verify the given password.
+    /// </summary>
+    /// <param name="password">String</param>
+    /// <returns></returns>
     public bool VerifyPassword(String password)
     {
         using (var pbkdf2 = new Rfc2898DeriveBytes(password, PasswordSalt, 100_000, HashAlgorithmName.SHA256))

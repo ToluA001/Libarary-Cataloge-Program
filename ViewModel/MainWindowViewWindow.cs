@@ -143,36 +143,62 @@ namespace Libarary_Cataloge_Program.ViewModel
         }
 
         private void Add()
-        {
-            if(string.IsNullOrWhiteSpace(NameOfBook).Equals(true) || string.IsNullOrWhiteSpace(AutherLastName).Equals(true))
-            {
-                MessageBox.Show("Cannot add");
-            }
-            else
-            {
-                Book book = new Book(NameOfBook, AutherLastName);
+        {// This is not the final implimentation of this function 
+            // TODO: add to a specific library
+            
+            // the attributes needed to make a new book are book name, author name and the Id of the lib you want to add the book 
+            // we need the currently logged in user 
 
-                using (var db = new LibDataBase())
+            using (var userDb = new AuthDb())
+            {
+                var user = userDb.users.FirstOrDefault(u => u.IsLoggedIn);
+                // now we need to get the id of the library they what to add the book too 
+                
+                //for now assuming they only have one library
+                using (var libDb = new Libs())
                 {
-                    if(db.DoesBookExist(book) == true)
+                    string libId = "-1"; 
+
+                    var x = libDb.Libraries;
+
+                    foreach (var lib in libDb.Libraries)
                     {
-                        MessageBox.Show("This book already exists");
+                        if (lib.CreatorId == user.Id.ToString())
+                        {
+                            libId = lib.Id.ToString();
+                            break; 
+                        }
                     }
-                    else
+
+                    using (var bookDb = new LibDataBase())
                     {
-                        db.Add(book);
-                        MessageBox.Show("Book Added Successfully");
+                        if(string.IsNullOrWhiteSpace(NameOfBook).Equals(true) || string.IsNullOrWhiteSpace(AutherLastName).Equals(true))
+                        {
+                            MessageBox.Show("Cannot add");
+                        }
+                        if (libId == "-1")
+                        {
+                            MessageBox.Show("You don't have a library");
+                        }
+                        Book book = new Book(NameOfBook, AutherLastName, libId);
+                        
+                        if(bookDb.DoesBookExist(book) == true)
+                        {
+                            MessageBox.Show("This book already exists");
+                        }
+                        else
+                        {
+                            bookDb.Add(book);
+                        }
+                        bookDb.SaveChanges();
                     }
-                    db.SaveChanges();
                 }
             }
-
         }
 
         private void Check()
         {
             WSOB = repository.GetBookByTitleAndAuthor(NameOfBook,AutherLastName);
-       
         }
 
         private void Delete()

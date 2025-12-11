@@ -29,7 +29,13 @@ namespace Libarary_Cataloge_Program.Data
         {
             Database.EnsureCreated(); // ← this line creates the DB & tables if they don’t exist
         }
-
+        
+        /// <summary>
+        ///  Return a book if it exists.
+        /// </summary>
+        /// <param name="title">string</param>
+        /// <param name="author">string</param>
+        /// <returns></returns>
         public Book GetBookByTitleAndAuthor(string title, string author)
         {
             
@@ -46,10 +52,7 @@ namespace Libarary_Cataloge_Program.Data
                 {
                     return true;
                 }
-                else
-                {
-                    return false; 
-                }
+                return false; 
             }
 
         }

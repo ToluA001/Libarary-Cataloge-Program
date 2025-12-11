@@ -10,8 +10,8 @@ public class Library
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="name"></param>
-    /// <param name="creatorID"></param>
+    /// <param name="name">string</param>
+    /// <param name="creatorID">string</param>
     public Library(string name, string creatorID)
     {
         Name = name;

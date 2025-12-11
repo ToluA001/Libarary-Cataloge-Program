@@ -24,6 +24,11 @@ public class AuthDb : DbContext
         Database.EnsureCreated();
     }
 //--------------------------------------------------------------------------
+    /// <summary>
+    /// Check if the username is already taken
+    /// </summary>
+    /// <param name="name">string</param>
+    /// <returns></returns>
     public bool DoesUserExist(string name)
     {
         if (users.FirstOrDefault(u => u.Username.ToLower() == name.ToLower()) != null)

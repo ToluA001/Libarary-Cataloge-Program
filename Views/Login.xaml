@@ -55,7 +55,7 @@
                 <Button Content="Login" MinWidth="100" MinHeight="50" Background="#FFF8F0" BorderBrush="#2F4F4F" FontFamily="Times New Roman" 
                         Margin="290,15,10,15" Command="{Binding LogIn}"/>
                 <Button Content="SignUp" MinWidth="100" MinHeight="50" Background="#FFF8F0" 
-                        BorderBrush="#2F4F4F" FontFamily="Times New Roman" Command="{Binding SignUp}"/>
+                        BorderBrush="#2F4F4F" FontFamily="Times New Roman" Command="{Binding SignUp}" Margin="290"/>
             </StackPanel>
 
         </StackPanel>

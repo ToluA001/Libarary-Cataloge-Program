@@ -94,8 +94,13 @@ namespace Libarary_Cataloge_Program.ViewModel
                 }
             }
         }
+        
+        /// <summary>
+        /// Wipe of the contents of the library 
+        /// </summary>
         private void Wipe()
         {
+            // Th
             using(var db = new LibDataBase())
             {
                 var allBooks = db.Books.ToList();
@@ -200,9 +205,14 @@ namespace Libarary_Cataloge_Program.ViewModel
         {
             WSOB = repository.GetBookByTitleAndAuthor(NameOfBook,AutherLastName);
         }
-
+        
+        /// <summary>
+        /// Delete a book from the library 
+        /// </summary>
         private void Delete()
         {
+            // TODO: delete from a specific library
+            
             using (var db = new LibDataBase())
             {
                 Book book = db.GetBookByTitleAndAuthor(NameOfBook, AutherLastName);

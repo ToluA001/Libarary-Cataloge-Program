@@ -142,6 +142,9 @@ namespace Libarary_Cataloge_Program.ViewModel
 
         }
 
+        /// <summary>
+        /// Add a book to the library
+        /// </summary>
         private void Add()
         {// This is not the final implimentation of this function 
             // TODO: add to a specific library
@@ -216,6 +219,9 @@ namespace Libarary_Cataloge_Program.ViewModel
                 }
                 db.SaveChanges();
             }
-        }
+            // this is a comment purly for the sake of testing test
+            
+            // Goofy ah branch that will wbe getting deleted
+        } 
     }
 }

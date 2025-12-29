@@ -21,6 +21,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
                 <Label Content="Book name:" Grid.Column="0"
@@ -30,11 +31,16 @@
                 <Label Content="Author last name:" Grid.Column="1"
                FontSize="20" FontFamily="Times New Roman" Foreground="#2F4F4F"
                HorizontalAlignment="Center" />
+                
+                <Label Content="Library Name:" Grid.Column="2"
+                       FontSize="20" FontFamily="Times New Roman" Foreground="#2F4F4F"
+                       HorizontalAlignment="Center" />
             </Grid>
 
             <!-- Input TextBoxes -->
             <Grid>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
@@ -48,6 +54,12 @@
                  FontSize="16" Margin="10"
                  BorderBrush="#A0522D" BorderThickness="1"
                  Background="#FFF8F0" Foreground="Black" MinWidth="100" />
+                
+                <TextBox Text="{Binding LibraryName}" Grid.Column="2"
+                         FontSize="16" Margin="10"
+                         BorderBrush="#A0522D" BorderThickness="1"
+                         Background="#FFF8F0" Foreground="Black" MinWidth="100" />
+                
             </Grid>
 
             <!-- BUTTONS -->

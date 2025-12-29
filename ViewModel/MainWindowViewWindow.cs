@@ -39,6 +39,17 @@ namespace Libarary_Cataloge_Program.ViewModel
                 OnPropertyChanged();
             }
         }
+        
+        private string _LibraryName;
+        public string LibraryName
+        {
+            get { return _LibraryName; }
+            set
+            {
+                _LibraryName = value;
+                OnPropertyChanged();
+            }
+        }
         public MainWindowViewWindow( ) 
         {
             AddBook = new RelayCommand(Add);
@@ -100,7 +111,7 @@ namespace Libarary_Cataloge_Program.ViewModel
         /// </summary>
         private void Wipe()
         {
-            // Th
+            // 
             using(var db = new LibDataBase())
             {
                 var allBooks = db.Books.ToList();
@@ -149,7 +160,6 @@ namespace Libarary_Cataloge_Program.ViewModel
 
         private void Add()
         {// This is not the final implimentation of this function 
-            // TODO: add to a specific library
             
             // the attributes needed to make a new book are book name, author name and the Id of the lib you want to add the book 
             // we need the currently logged in user 
@@ -159,44 +169,50 @@ namespace Libarary_Cataloge_Program.ViewModel
                 var user = userDb.users.FirstOrDefault(u => u.IsLoggedIn);
                 // now we need to get the id of the library they what to add the book too 
                 
-                //for now assuming they only have one library
+                // the below implementation is adding to a specific library 
+
                 using (var libDb = new Libs())
                 {
-                    string libId = "-1"; 
-
+                    string libId = "-1";
+                    
                     var x = libDb.Libraries;
 
                     foreach (var lib in libDb.Libraries)
                     {
-                        if (lib.CreatorId == user.Id.ToString())
+                        if (lib.Name.Equals(LibraryName) && lib.CreatorId == user.Id.ToString())
                         {
                             libId = lib.Id.ToString();
                             break; 
                         }
                     }
-
                     using (var bookDb = new LibDataBase())
                     {
                         if(string.IsNullOrWhiteSpace(NameOfBook).Equals(true) || string.IsNullOrWhiteSpace(AutherLastName).Equals(true))
                         {
                             MessageBox.Show("Cannot add");
                         }
+                        
                         if (libId == "-1")
                         {
                             MessageBox.Show("You don't have a library");
                         }
-                        Book book = new Book(NameOfBook, AutherLastName, libId);
+                        Book book = new Book(NameOfBook, AutherLastName, libId); // this libid is the lib id of the library we want to add the book to
                         
-                        if(bookDb.DoesBookExist(book) == true)
+                        var allbooks = bookDb.Books;
+                        foreach (var b in allbooks)
                         {
-                            MessageBox.Show("This book already exists");
-                        }
-                        else
-                        {
+                            if(b.Title.Equals(book.Title) && b.Author.Equals(book.Author) && b.LibraryID == book.LibraryID)
+                            {
+                                MessageBox.Show("This book already exists");
+                                break;
+                            }
+
                             bookDb.Add(book);
+                            
                         }
                         bookDb.SaveChanges();
                     }
+                    
                 }
             }
         }
@@ -211,20 +227,55 @@ namespace Libarary_Cataloge_Program.ViewModel
         /// </summary>
         private void Delete()
         {
-            // TODO: delete from a specific library
-            
-            using (var db = new LibDataBase())
+            using (var userDb = new AuthDb())
             {
-                Book book = db.GetBookByTitleAndAuthor(NameOfBook, AutherLastName);
-                if (book == null)
+                var user = userDb.users.FirstOrDefault(u => u.IsLoggedIn);
+                
+                using (var libDb = new Libs())
                 {
-                    MessageBox.Show("This book doesn't exist");
+                    string libId = "-1";
+                    
+                    foreach (var lib in libDb.Libraries)
+                    {
+                        if (lib.Name.Equals(LibraryName) && lib.CreatorId == user.Id.ToString())
+                        {
+                            libId = lib.Id.ToString();
+                            break; 
+                        }
+                    }
+
+                    using (var bookDb = new LibDataBase())
+                    {
+                        if(string.IsNullOrWhiteSpace(NameOfBook) || string.IsNullOrWhiteSpace(AutherLastName))
+                        {
+                            MessageBox.Show("Cannot Remove: Missing details");
+                            return;
+                        }
+                        
+                        if (libId == "-1")
+                        {
+                            MessageBox.Show("Inputted library doesn't exist");
+                            return;
+                        }
+
+                        // Find the ACTUAL book tracked by the database
+                        var bookToRemove = bookDb.Books.FirstOrDefault(b => 
+                            b.Title.Equals(NameOfBook) && 
+                            b.Author.Equals(AutherLastName) && 
+                            b.LibraryID == libId);
+
+                        if (bookToRemove != null)
+                        {
+                            bookDb.Books.Remove(bookToRemove);
+                            bookDb.SaveChanges();
+                            MessageBox.Show("Book Removed");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Book not found in the database");
+                        }
+                    }
                 }
-                else
-                {
-                    db.Books.Remove(book);
-                }
-                db.SaveChanges();
             }
         }
     }
